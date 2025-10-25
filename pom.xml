@@ -11,7 +11,7 @@
 		<relativePath/>
 	</parent>
 
-	<groupId>io.github.stefanmanev</groupId>
+	<groupId>io.github.manevson</groupId>
 	<artifactId>bell4j</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
 	<name>Bell4j</name>
