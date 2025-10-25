@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -12,9 +13,31 @@
 
 	<groupId>io.github.stefanmanev</groupId>
 	<artifactId>bell4j</artifactId>
-	<version>0.0.9-SNAPSHOT</version>
+	<version>0.1.0-SNAPSHOT</version>
 	<name>Bell4j</name>
-	<description>Bell4J (Bell for Java) — A simple, spring-enabled alerting built on top of your existing SLF4J logging.</description>
+	<description>Bell4J (Bell for Java) — A simple, Spring-enabled alerting layer built on top of SLF4J.</description>
+	<url>https://github.com/manevson/bell4j</url>
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>https://opensource.org/licenses/MIT</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>manevson</id>
+			<name>Stefan Manev</name>
+			<url>https://github.com/manevson</url>
+		</developer>
+	</developers>
+
+	<scm>
+		<url>https://github.com/stefan-manev/bell4j</url>
+		<connection>scm:git:git://github.com/manevson/bell4j.git</connection>
+		<developerConnection>scm:git:ssh://github.com/manevson/bell4j.git</developerConnection>
+	</scm>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -31,10 +54,12 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
@@ -64,4 +89,49 @@
 		</dependency>
 	</dependencies>
 
+	<build>
+		<plugins>
+
+			<!-- ✅ Central Publishing Plugin -->
+			<plugin>
+				<groupId>org.sonatype.central</groupId>
+				<artifactId>central-publishing-maven-plugin</artifactId>
+				<version>0.9.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<publishingServerId>central</publishingServerId>
+				</configuration>
+			</plugin>
+
+			<!-- Optional but recommended: attach source + javadoc -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.3.0</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.5.0</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
 </project>
