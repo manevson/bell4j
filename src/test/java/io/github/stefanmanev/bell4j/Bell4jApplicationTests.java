@@ -10,10 +10,11 @@ class Bell4jApplicationTests {
 	void testRing() {
       TelegramBellConfiguration configuration = new TelegramBellConfiguration();
       configuration.setBotId("8264203145:AAFNniY4VsFQLfu8IwKwjd5PCrtVuErS0VM");
-      configuration.setChatId("-4875525489");
+//      configuration.setChatId("-4875525489");
+      configuration.setChatId("-1003255375260");
 		TelegramBell bell = new TelegramBell(configuration);
 		try {
-         bell.ring("Ring!");
+         bell.ring("\uD83D\uDD14\nTest ring!");
       } catch (Exception e) {
          System.out.println(e.getMessage());
       }
@@ -26,7 +27,7 @@ class Bell4jApplicationTests {
       configuration.setChatId("-123123123123");
       TelegramBell bell = new TelegramBell(configuration);
       try {
-         bell.ring("Ring!");
+         bell.ring("Test ring!");
       } catch (Exception e) {
          System.out.println(e.getMessage());
       }
@@ -36,7 +37,7 @@ class Bell4jApplicationTests {
    void testLog() {
       TelegramBellConfiguration configuration = new TelegramBellConfiguration();
       configuration.setBotId("8264203145:AAFNniY4VsFQLfu8IwKwjd5PCrtVuErS0VM");
-      configuration.setChatId("-4875525489");
+      configuration.setChatId("-1003255375260");
       configuration.setTimeBetweenAlerts(Duration.parse("PT1M"));
       TelegramBell telegramBell = new TelegramBell(configuration);
       LogTracker logTracker = new LogTracker(telegramBell, configuration);

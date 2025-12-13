@@ -36,7 +36,7 @@ public class LogStats {
 
       if (occurrenceTimestamps.size() >= threshold && timestamp - lastSentAlert > timeBetweenAlerts) {
          this.lastSentAlert = System.currentTimeMillis();
-         String thresholdExceededMsg = "RING-A-DING:\n" + "Threshold (" + threshold + " occurrences within " + readableTimeWindow + ")" + " exceeded for log:\n" +
+         String thresholdExceededMsg = "\uD83D\uDD14\n" + "Threshold (" + threshold + " occurrences within " + readableTimeWindow + ")" + " exceeded for log:\n" +
                  message;
          throw new ThresholdExceededException(thresholdExceededMsg);
       }
