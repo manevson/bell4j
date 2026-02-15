@@ -1,4 +1,4 @@
-package io.github.stefanmanev.bell4j;
+package io.github.manevson.bell4j;
 
 import lombok.extern.slf4j.Slf4j;
 

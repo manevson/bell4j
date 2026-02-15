@@ -1,4 +1,4 @@
-package io.github.stefanmanev.bell4j;
+package io.github.manevson.bell4j;
 
 import java.time.Duration;
 import java.util.Map;

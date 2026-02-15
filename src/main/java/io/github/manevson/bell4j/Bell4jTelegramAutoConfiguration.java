@@ -1,4 +1,4 @@
-package io.github.stefanmanev.bell4j;
+package io.github.manevson.bell4j;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
