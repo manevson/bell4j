@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=io.github.manevson.bell4j.Bell4jTelegramAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=io.github.manevson.bell4j.Bell4jAutoConfiguration
