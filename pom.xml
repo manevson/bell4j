@@ -13,7 +13,7 @@
 
 	<groupId>io.github.manevson</groupId>
 	<artifactId>bell4j</artifactId>
-	<version>0.1.1-SNAPSHOT</version>
+	<version>1.1.0</version>
 	<name>Bell4j</name>
 	<description>Bell4J (Bell for Java) — A simple, Spring-enabled alerting layer built on top of SLF4J.</description>
 	<url>https://github.com/manevson/bell4j</url>
@@ -34,7 +34,7 @@
 	</developers>
 
 	<scm>
-		<url>https://github.com/stefan-manev/bell4j</url>
+		<url>https://github.com/manevson/bell4j</url>
 		<connection>scm:git:git://github.com/manevson/bell4j.git</connection>
 		<developerConnection>scm:git:ssh://github.com/manevson/bell4j.git</developerConnection>
 	</scm>

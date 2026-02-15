@@ -17,14 +17,16 @@ public class LogStats {
    private String message;
    private long timeBetweenAlerts;
    private long lastSentAlert = 0L;
+   private String alertHeader;
 
-   public LogStats(String logId, Integer threshold, Duration timeWindow, String msg, Duration timeBetweenAlerts) {
+   public LogStats(String logId, Integer threshold, Duration timeWindow, String msg, Duration timeBetweenAlerts, String alertHeader) {
       this.logId = logId;
       this.timeWindow = timeWindow.toMillis();
       this.readableTimeWindow = formatDuration(timeWindow);
       this.threshold = threshold;
       this.message = msg;
       this.timeBetweenAlerts = timeBetweenAlerts.toMillis();
+      this.alertHeader = alertHeader;
    }
 
    public void recordOccurrence(long timestamp) throws ThresholdExceededException {
@@ -36,8 +38,7 @@ public class LogStats {
 
       if (occurrenceTimestamps.size() >= threshold && timestamp - lastSentAlert > timeBetweenAlerts) {
          this.lastSentAlert = System.currentTimeMillis();
-         String thresholdExceededMsg = "\uD83D\uDD14\n" + "Threshold (" + threshold + " occurrences within " + readableTimeWindow + ")" + " exceeded for log:\n" +
-                 message;
+         String thresholdExceededMsg = alertHeader + "\n\n" + "Threshold (" + threshold + " occurrences within " + readableTimeWindow + ")" + " exceeded for log:\n\n" + message;
          throw new ThresholdExceededException(thresholdExceededMsg);
       }
    }

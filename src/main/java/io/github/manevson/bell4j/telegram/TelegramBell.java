@@ -1,9 +1,13 @@
-package io.github.manevson.bell4j;
+package io.github.manevson.bell4j.telegram;
 
+import io.github.manevson.bell4j.Bell;
+import io.github.manevson.bell4j.RingEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.client.RestTemplate;
 
 public class TelegramBell implements Bell {
@@ -26,8 +30,7 @@ public class TelegramBell implements Bell {
       baseHeaders.setContentType(MediaType.APPLICATION_JSON);
    }
 
-   @Override
-   public void ring(String message) {
+   private void sendMessageToTelegramChat(String message) {
       TelegramSendMessageRequest request = new TelegramSendMessageRequest(chatId, message);
       HttpEntity<TelegramSendMessageRequest> requestEntity = new HttpEntity<>(request, baseHeaders);
       try {
@@ -37,5 +40,16 @@ public class TelegramBell implements Bell {
                  e.getMessage();
          throw new RuntimeException(errorMsg, e);
       }
+   }
+
+   public void ring(String message) {
+      sendMessageToTelegramChat(message);
+   }
+
+   @Override
+   @EventListener
+   @Async
+   public void ring(RingEvent ringEvent) {
+      sendMessageToTelegramChat(ringEvent.getMessage());
    }
 }

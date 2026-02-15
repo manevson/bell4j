@@ -1,6 +1,7 @@
 package io.github.manevson.bell4j;
 
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.helpers.MessageFormatter;
 
 import java.time.Duration;
 
@@ -16,24 +17,88 @@ public class BaseBellLogger implements BellLogger {
    @Override
    public void debug(Integer threshold, Duration timeWindow, String msg, Object... args) {
       log.debug(msg, args);
-      logTracker.trackLog(threshold, timeWindow, msg, System.currentTimeMillis());
+      try {
+         String formattedMessage = MessageFormatter.arrayFormat(msg, args).getMessage();
+         logTracker.trackLogWithExplicitThreshold(threshold, timeWindow, formattedMessage, System.currentTimeMillis());
+      } catch (Exception e) {
+         log.error("Error during LogTracker#trackLog: ", e.getMessage(), e);
+      }
    }
 
    @Override
    public void info(Integer threshold, Duration timeWindow, String msg, Object... args) {
       log.info(msg, args);
-      logTracker.trackLog(threshold, timeWindow, msg, System.currentTimeMillis());
+      try {
+         String formattedMessage = MessageFormatter.arrayFormat(msg, args).getMessage();
+         logTracker.trackLogWithExplicitThreshold(threshold, timeWindow, formattedMessage, System.currentTimeMillis());
+      } catch (Exception e) {
+         log.error("Error during LogTracker#trackLog: ", e.getMessage(), e);
+      }
    }
 
    @Override
    public void warn(Integer threshold, Duration timeWindow, String msg, Object... args) {
       log.warn(msg, args);
-      logTracker.trackLog(threshold, timeWindow, msg, System.currentTimeMillis());
+      try {
+         String formattedMessage = MessageFormatter.arrayFormat(msg, args).getMessage();
+         logTracker.trackLogWithExplicitThreshold(threshold, timeWindow, formattedMessage, System.currentTimeMillis());
+      } catch (Exception e) {
+         log.error("Error during LogTracker#trackLog: ", e.getMessage(), e);
+      }
    }
 
    @Override
    public void error(Integer threshold, Duration timeWindow, String msg, Object... args) {
       log.error(msg, args);
-      logTracker.trackLog(threshold, timeWindow, msg, System.currentTimeMillis());
+      try {
+         String formattedMessage = MessageFormatter.arrayFormat(msg, args).getMessage();
+         logTracker.trackLogWithExplicitThreshold(threshold, timeWindow, formattedMessage, System.currentTimeMillis());
+      } catch (Exception e) {
+         log.error("Error during LogTracker#trackLog: ", e.getMessage(), e);
+      }
+   }
+
+   @Override
+   public void debug(String msg, Object... args) {
+      log.debug(msg, args);
+      try {
+         String formattedMessage = MessageFormatter.arrayFormat(msg, args).getMessage();
+         logTracker.trackLogWithDefaultThreshold(formattedMessage, System.currentTimeMillis());
+      } catch (Exception e) {
+         log.error("Error during LogTracker#trackLog: ", e.getMessage(), e);
+      }
+   }
+
+   @Override
+   public void info(String msg, Object... args) {
+      log.info(msg, args);
+      try {
+         String formattedMessage = MessageFormatter.arrayFormat(msg, args).getMessage();
+         logTracker.trackLogWithDefaultThreshold(formattedMessage, System.currentTimeMillis());
+      } catch (Exception e) {
+         log.error("Error during LogTracker#trackLog: ", e.getMessage(), e);
+      }
+   }
+
+   @Override
+   public void warn(String msg, Object... args) {
+      log.warn(msg, args);
+      try {
+         String formattedMessage = MessageFormatter.arrayFormat(msg, args).getMessage();
+         logTracker.trackLogWithDefaultThreshold(formattedMessage, System.currentTimeMillis());
+      } catch (Exception e) {
+         log.error("Error during LogTracker#trackLog: ", e.getMessage(), e);
+      }
+   }
+
+   @Override
+   public void error(String msg, Object... args) {
+      log.error(msg, args);
+      try {
+         String formattedMessage = MessageFormatter.arrayFormat(msg, args).getMessage();
+         logTracker.trackLogWithDefaultThreshold(formattedMessage, System.currentTimeMillis());
+      } catch (Exception e) {
+         log.error("Error during LogTracker#trackLog: ", e.getMessage(), e);
+      }
    }
 }
